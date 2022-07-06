@@ -443,6 +443,7 @@ background:black
 height:100vh;
 width:100%;
 margin:20px 4px 4px 4px;
+border-radius:12px;
 						display:flex;
 						flex-direction:column;
 						justify-content:center;
@@ -1156,7 +1157,7 @@ var randfeed = Math.floor(Math.random()*arrflen)+0;
 												
 var shlink=document.getElementById("shlink"); 
 shlink.setAttribute("data-action","share/whatsapp/share");
-var shareres=`whatsapp://send?text=*अभिनंदन 🎉 ${mynameis}! तुमच्या प्रश्नमंजुषा चा निकाल :🤗score:- ${score}%/✌️Correct${correctans} /👻Wrong:${wrongans}/💞Time: ${sectik}sec/* Renuka collection killari held Quiz Contest. Now its your turn...`;
+var shareres=`whatsapp://send?text=*अभिनंदन 🎉 ${mynameis}! तुमच्या प्रश्नमंजुषा चा निकाल :🤗score:- ${score}%/✌️Correct${correctans} /👻Wrong:${wrongans}/💞Time: ${sectik}sec/* Renuka collection killari held Quiz Contest. Now its your turn...👇 https://bit.ly/Renuka-Collection-Quiz-Contest`;
 shlink.setAttribute("href",shareres);
 								}
 								
@@ -1322,6 +1323,9 @@ shlink.setAttribute("href",shareres);
 					  textAlign(CENTER);
 					  textStyle(NORMAL);
 							text("Date: "+todate,20,450,300,300);
+textStyle(BOLD);
+							fill("navy");
+							text("Contest Link : https://bit.ly/Renuka-Collection-Quiz-Contest ",20,465,300,300);
 				}
 				
 				function down(){
