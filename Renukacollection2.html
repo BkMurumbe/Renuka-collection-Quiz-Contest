@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+				<title>Page title</title>
+				<style>
+								body{
+												padding:0;
+												margin:0;
+								}
+								*{
+												box-sizing:border-box;
+								}
+								#seldiv{
+								    height:100vh;
+								    width:100%;
+												display:flex;
+												flex-wrap:wrap;
+												justify-content: center;
+												align-items:center;
+												overflow:auto;
+												background:black;
+												
+												 
+								}
+								
+								.newdivbox{
+									 width:100%;
+									 height:100vh;
+									 display:flex;
+									 flex-direction:column;
+									 justify-content:center;
+									 align-items:center;
+									 padding:0;
+									 border-radius:12px;
+									 margin:20px 2px 2px 2px;
+									 background:#F9F1F0;
+								}
+							 .newdiv1{
+								    width:300px;
+								    height:100px;
+								    background:none;
+												display:flex;
+												flex-direction:column;
+											 border-radius:12px;
+									   justify-content:center;
+									   align-items:center;
+								    padding:20px;
+								    overflow:auto;
+								    margin:4px;
+								    
+								    
+								   
+								}
+								
+								.newdiv2{
+												width:100%;
+												height:250px;
+												display:flex;
+												flex-direction:column;
+												justify-content:center;
+												align-items:center;
+												background:none;
+											 padding:0px;
+									   margin:0;
+									   
+										  
+												
+								}
+								
+								.newdiv2 p{
+								height:75px;
+								width:300px;
+							 display:flex;
+								flex-direction:row;
+								justify-content: center;
+								align-items:center;
+								padding:8px;
+					   margin:1px; 
+        background:#ffffff;
+        
+					  
+								}
+								.newdiv2 p:hover{
+												outline:solid 2px dodgerblue;
+								}
+								.newdiv2 label{
+							   display:flex;
+							   justify-content:center;
+							   align-items:center;
+										height:65px;		
+										width:200px;
+								
+										font-weight:bold;
+										
+												
+								}
+								
+								
+								.newdiv2 input{
+								    appearance:none;
+												height:20px;
+												width:20px;
+								}
+								
+						  
+						  .notybox{
+						  			height:100px;
+						  			width:300px;
+						  			display:flex;
+						  			flex-direction:row;
+						  			justify-content:center;
+						  			align-items:center;
+						  			margin-top:0;
+						  				
+						  }
+								
+								#q1{
+												height:55px;
+												width:200px;
+												padding:8px;
+												border:solid 1px dodgerblue;
+								}
+								.selectbox{
+												height:70px;
+												width:200px;
+												
+												outline:none;
+												background:#ECF87F;
+										
+												font-size:18px;
+												border:none;
+												margin:8px;
+												padding:8px;
+												border-radius:50px;
+												border:solid 1px purple;
+												box-shadow:12px 12px 2px silver;
+												
+								}
+								@keyframes amit{
+												0%{opacity:0;}
+												100%{opacity:1;}
+								}
+								#track{
+												display:flex;
+												flex-direction:row;
+												overflow:auto;
+								}
+								#track p{
+												height:10px;
+												width:10px;
+												border-radius:50%;
+												background:black;
+								}
+								#pgr1{
+								  height:100vh;
+								  width:100%;
+								  padding:8px;
+								  overflow:auto;
+								  display:flex;
+								  flex-wrap:wrap;
+								  justify-content:center;
+								  align-items:center;
+								  border-radius:4px;
+										background:radial-gradient(ellipse farthest-corner at -45% -95%,lime 10%,#78E089 10%,#6E7D91 90% );
+				 background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='100' height='100' patternTransform='scale(2) rotate(80)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(275,17.8%,79%,1)'/><path d='M100.16 24.75a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm-100 0a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm9.57 53.18c1.6 0 2.9 1.3 2.9 2.9a2.95 2.95 0 01-2.95 2.96 2.9 2.9 0 01-2.9-2.9 2.95 2.95 0 012.95-2.96zm58.57-2.51a2.93 2.93 0 11.04 5.86 2.93 2.93 0 11-.04-5.86zM49.45 4.4a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-.04-5.86zM21.66 49.6l2.95 2.91-2.9 2.95-2.95-2.9zm43.55-12.85s2.9 1.3 2.9 2.9v.05c0 1.6-1.3 2.9-2.9 2.9h-.04c-1.6 0-2.9-2.9-2.9-2.9z'  stroke-width='1' stroke='none' fill='hsla(218,17.1%,62.2%,1)'/><path d='M89.93 57.48a1.08 1.08 0 01.39-1.38c2.44-1.53 5.04-1.81 7.15-.8 2.1 1.03 3.47 3.26 3.77 6.13.22 2.14 1.14 3.71 2.58 4.42 1.44.7 3.24.45 5.07-.69a1.07 1.07 0 011.13 1.8c-2.44 1.54-5.04 1.83-7.14.81-2.1-1.02-3.48-3.25-3.77-6.12-.23-2.15-1.15-3.72-2.59-4.42-1.44-.7-3.24-.46-5.07.68-.5.32-1.16.16-1.47-.33l-.05-.1zm10.06 31.11a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zm0-100a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zM9.44 9.9c.15-.3.54-.39.9-.24 1.88.82 3.16 2.12 3.53 3.58.38 1.47-.21 2.93-1.6 4.02-1.04.8-1.47 1.81-1.22 2.81.26 1 1.17 1.9 2.57 2.5.39.18.6.58.47.9-.13.34-.55.47-.93.3-1.88-.82-3.16-2.12-3.54-3.58-.37-1.46.22-2.93 1.6-4.01 1.05-.81 1.48-1.82 1.23-2.82-.26-1-1.17-1.89-2.58-2.5-.38-.17-.59-.57-.46-.9l.03-.07zm-19.51 47.59a1.08 1.08 0 01.39-1.38c2.44-1.53 5.04-1.81 7.15-.8 2.1 1.03 3.47 3.26 3.77 6.13.22 2.14 1.14 3.71 2.58 4.42 1.44.7 3.24.45 5.07-.69a1.07 1.07 0 011.13 1.8c-2.44 1.54-5.04 1.83-7.14.81C.78 66.75-.6 64.52-.9 61.65c-.23-2.15-1.15-3.72-2.59-4.42-1.44-.7-3.24-.46-5.07.68-.5.32-1.16.16-1.47-.33l-.05-.1zM-.01 88.59a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zm43.92-4.85c-.24-.48-.1-1.08.36-1.38 2.41-1.59 5-1.93 7.13-.96s3.55 3.17 3.92 6.03c.27 2.14 1.23 3.7 2.68 4.36 1.46.67 3.25.38 5.05-.8a1.07 1.07 0 011.48.3c.32.5.19 1.16-.3 1.48-2.4 1.59-5 1.94-7.13.96-2.12-.97-3.55-3.17-3.91-6.03-.28-2.14-1.23-3.69-2.69-4.36-1.46-.67-3.25-.38-5.05.8-.49.32-1.16.2-1.48-.3l-.06-.1zM41 45.67c-.47.25-1.07.1-1.38-.35-1.61-2.39-2-4.98-1.05-7.11.94-2.14 3.13-3.6 5.98-4 2.14-.3 3.67-1.27 4.32-2.73.65-1.47.34-3.26-.87-5.05-.33-.49-.2-1.15.28-1.48.5-.33 1.15-.2 1.5.28 1.6 2.39 2 4.98 1.04 7.11-.94 2.14-3.12 3.6-5.98 4-2.13.3-3.67 1.27-4.32 2.73-.65 1.47-.34 3.26.87 5.05.33.49.21 1.15-.28 1.49-.04.01-.07.04-.1.06z'  stroke-width='1' stroke='none' fill='hsla(233,100%,93.5%,1)'/><path d='M101 9.76l.75 1.71-9.97 4.34-.74-1.72zM87.35 9.7l-.66 1.75L59.14 1.12l.65-1.76zM41.4-6.21l1.62.93L34.2 10l-1.62-.94zM87.35 109.7l-.66 1.76-27.55-10.35.65-1.75zM50.58 56.03l1.85-.3 1.83 11.32-1.85.3zm-6.22 13.79l-.5 1.8-17-4.66.5-1.8zM41.4 93.79l1.62.93L34.2 110l-1.62-.94zM87.35 9.7l-.66 1.75L59.14 1.12l.65-1.76zm-7.77 42.56l.77 1.76-16.34 7.11-.77-1.75zM1 9.76l.75 1.71-9.96 4.34-.75-1.72zm100 0l.75 1.71-9.97 4.34-.74-1.72zM31.04 27.68l.6 1.86-23.13 7.48-.6-1.86zm48.1 46.45l.73-1.72 10 4.28-.74 1.72zM41.4-6.2l1.62.93L34.2 10l-1.62-.94zM67.54 11.2l1.62.94-7.26 12.57-1.62-.94zM21.22 90.35l-.6-1.4 9.58-4.16.6 1.39zm69.3-49.79l-1.5 1.12L78.5 27.55l1.5-1.12zm-3.17 69.14l-.66 1.76-27.55-10.35.65-1.75zM41.4 93.8l1.62.93L34.2 110l-1.62-.94zM1 9.76l.74 1.71-9.96 4.34-.75-1.72z'  stroke-width='1' stroke='none' fill='hsla(312,90.9%,95.7%,1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+								}
+								#pgr2{
+								    
+												display:none;
+										  }
+								#pgr3{
+												display:none;
+												background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='100' height='100' patternTransform='scale(2) rotate(80)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(275,17.8%,79%,1)'/><path d='M100.16 24.75a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm-100 0a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-2.95-2.91 2.92 2.92 0 012.9-2.95zm9.57 53.18c1.6 0 2.9 1.3 2.9 2.9a2.95 2.95 0 01-2.95 2.96 2.9 2.9 0 01-2.9-2.9 2.95 2.95 0 012.95-2.96zm58.57-2.51a2.93 2.93 0 11.04 5.86 2.93 2.93 0 11-.04-5.86zM49.45 4.4a2.93 2.93 0 11.04 5.86 2.93 2.93 0 01-.04-5.86zM21.66 49.6l2.95 2.91-2.9 2.95-2.95-2.9zm43.55-12.85s2.9 1.3 2.9 2.9v.05c0 1.6-1.3 2.9-2.9 2.9h-.04c-1.6 0-2.9-2.9-2.9-2.9z'  stroke-width='1' stroke='none' fill='hsla(218,17.1%,62.2%,1)'/><path d='M89.93 57.48a1.08 1.08 0 01.39-1.38c2.44-1.53 5.04-1.81 7.15-.8 2.1 1.03 3.47 3.26 3.77 6.13.22 2.14 1.14 3.71 2.58 4.42 1.44.7 3.24.45 5.07-.69a1.07 1.07 0 011.13 1.8c-2.44 1.54-5.04 1.83-7.14.81-2.1-1.02-3.48-3.25-3.77-6.12-.23-2.15-1.15-3.72-2.59-4.42-1.44-.7-3.24-.46-5.07.68-.5.32-1.16.16-1.47-.33l-.05-.1zm10.06 31.11a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zm0-100a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zM9.44 9.9c.15-.3.54-.39.9-.24 1.88.82 3.16 2.12 3.53 3.58.38 1.47-.21 2.93-1.6 4.02-1.04.8-1.47 1.81-1.22 2.81.26 1 1.17 1.9 2.57 2.5.39.18.6.58.47.9-.13.34-.55.47-.93.3-1.88-.82-3.16-2.12-3.54-3.58-.37-1.46.22-2.93 1.6-4.01 1.05-.81 1.48-1.82 1.23-2.82-.26-1-1.17-1.89-2.58-2.5-.38-.17-.59-.57-.46-.9l.03-.07zm-19.51 47.59a1.08 1.08 0 01.39-1.38c2.44-1.53 5.04-1.81 7.15-.8 2.1 1.03 3.47 3.26 3.77 6.13.22 2.14 1.14 3.71 2.58 4.42 1.44.7 3.24.45 5.07-.69a1.07 1.07 0 011.13 1.8c-2.44 1.54-5.04 1.83-7.14.81C.78 66.75-.6 64.52-.9 61.65c-.23-2.15-1.15-3.72-2.59-4.42-1.44-.7-3.24-.46-5.07.68-.5.32-1.16.16-1.47-.33l-.05-.1zM-.01 88.59a.87.87 0 011.07.46c.99 2.14.95 4.28-.1 5.88-1.05 1.6-3 2.48-5.36 2.42-1.76-.04-3.13.54-3.85 1.63-.72 1.1-.71 2.59.03 4.18a.87.87 0 11-1.59.73c-.99-2.13-.95-4.27.1-5.87 1.05-1.6 3-2.48 5.36-2.42 1.76.04 3.13-.54 3.85-1.63.72-1.1.71-2.59-.03-4.18a.87.87 0 01.52-1.2zm43.92-4.85c-.24-.48-.1-1.08.36-1.38 2.41-1.59 5-1.93 7.13-.96s3.55 3.17 3.92 6.03c.27 2.14 1.23 3.7 2.68 4.36 1.46.67 3.25.38 5.05-.8a1.07 1.07 0 011.48.3c.32.5.19 1.16-.3 1.48-2.4 1.59-5 1.94-7.13.96-2.12-.97-3.55-3.17-3.91-6.03-.28-2.14-1.23-3.69-2.69-4.36-1.46-.67-3.25-.38-5.05.8-.49.32-1.16.2-1.48-.3l-.06-.1zM41 45.67c-.47.25-1.07.1-1.38-.35-1.61-2.39-2-4.98-1.05-7.11.94-2.14 3.13-3.6 5.98-4 2.14-.3 3.67-1.27 4.32-2.73.65-1.47.34-3.26-.87-5.05-.33-.49-.2-1.15.28-1.48.5-.33 1.15-.2 1.5.28 1.6 2.39 2 4.98 1.04 7.11-.94 2.14-3.12 3.6-5.98 4-2.13.3-3.67 1.27-4.32 2.73-.65 1.47-.34 3.26.87 5.05.33.49.21 1.15-.28 1.49-.04.01-.07.04-.1.06z'  stroke-width='1' stroke='none' fill='hsla(233,100%,93.5%,1)'/><path d='M101 9.76l.75 1.71-9.97 4.34-.74-1.72zM87.35 9.7l-.66 1.75L59.14 1.12l.65-1.76zM41.4-6.21l1.62.93L34.2 10l-1.62-.94zM87.35 109.7l-.66 1.76-27.55-10.35.65-1.75zM50.58 56.03l1.85-.3 1.83 11.32-1.85.3zm-6.22 13.79l-.5 1.8-17-4.66.5-1.8zM41.4 93.79l1.62.93L34.2 110l-1.62-.94zM87.35 9.7l-.66 1.75L59.14 1.12l.65-1.76zm-7.77 42.56l.77 1.76-16.34 7.11-.77-1.75zM1 9.76l.75 1.71-9.96 4.34-.75-1.72zm100 0l.75 1.71-9.97 4.34-.74-1.72zM31.04 27.68l.6 1.86-23.13 7.48-.6-1.86zm48.1 46.45l.73-1.72 10 4.28-.74 1.72zM41.4-6.2l1.62.93L34.2 10l-1.62-.94zM67.54 11.2l1.62.94-7.26 12.57-1.62-.94zM21.22 90.35l-.6-1.4 9.58-4.16.6 1.39zm69.3-49.79l-1.5 1.12L78.5 27.55l1.5-1.12zm-3.17 69.14l-.66 1.76-27.55-10.35.65-1.75zM41.4 93.8l1.62.93L34.2 110l-1.62-.94zM1 9.76l.74 1.71-9.96 4.34-.75-1.72z'  stroke-width='1' stroke='none' fill='hsla(312,90.9%,95.7%,1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+												padding:12px;
+												borde-radius:4px;
+								}
+								
+								#inpbox{
+								display:flex;
+								
+								justify-content:space-evenly;
+								align-items:center;
+												padding:8px;
+												height:150px;
+										  width:300px;
+												background:white;
+												border-radius:12px;
+												
+												
+												
+								}
+								#qfname{
+												width:150px;
+												height:65px;
+												border-radius:50px;
+												border:solid 1px dodgerblue;
+												padding:12px;
+								}
+								.butnext{
+		          width:80px;
+		          height:80px;
+		         background: linear-gradient(-45deg,#FF512F ,#DD2476);
+		         color:cyan;
+											 border-radius:50px;
+												border: none;
+												outline:none;
+												margin-top:10px;
+												font-weight:bold;
+												font-size:18px;
+												animation:zola 1s 0.5s linear infinite alternate;
+												box-shadow:0px 3px 20px silver;
+												
+												
+								}
+								.butnext:active{
+												border:solid 8px cyan;
+								}
+								#pgr1card{
+												display:flex;
+												flex-wrap:wrap;
+												justify-content:center;
+												align-items:center;
+												border-radius:4px;
+												padding:0px 8px 20px 8px;
+												background:none;
+												color:black;
+																								
+								}
+								.fletters{
+												font-family:cursive;
+												font-size:80px;
+												color:blue;
+												font-weight:bold;
+												animation:hhha 0.5s ease infinite;
+								}
+								
+								
+								.loct{
+												color:black;
+												font-weight:bold;
+											 width:200px;	background:rgba(255,255,255,0.6);
+												padding:8px;
+												border-radius:4px;
+											border-left:solid 5px cyan;
+								}
+								#pgr1head{
+								    height:200px;
+								    width:200px;
+								    display:flex;
+								    justify-content:center;
+								    align-items:center;
+								    margin:12px 4px 4px 4px;
+								    padding:12px;
+								    border-radius:50px;		
+								    background:none;
+								    font-size:42px;
+											 font-weight:bold;
+											 color:purple;
+											 
+								}
+								#pgr1headmid{
+								  display:flex;
+								  justify-content:center;
+								  align-items:center;
+								  flex-wrap:wrap;  
+								}
+								#pgr1headmid p {
+								   
+								    
+								   
+												background:white;
+												border-radius:4px;
+												padding:20px;
+												margin:8px;
+												color:black;
+										
+												
+								}
+								#pgr1headmid p:hover{
+												background:cyan;
+												
+								}
+								#footlinks{
+								    display:flex;
+								    flex-wrap:wrap;
+								    justify-content:center;
+								    align-items:center;
+												padding:12px;
+												
+												color:black;
+								}
+								#qc{
+								    width:300px;
+												padding:8px;
+												border-radius:4px;
+												border-left:solid 5px cyan;
+												color:black;
+												font-weight:bold;
+												background:rgba(255,255,255,0.5);
+												animation:zola 1s 0.5s linear infinite alternate;
+								}
+						
+								.noty{
+								
+												height:50px;
+												width:200px;
+												display:flex;
+												justify-content:center;
+												align-items:center;
+												overflow:auto;
+												padding:4px;
+												color:black;
+												background:#FADCD9;
+												border-radius:50px;
+												margin:2px;
+										
+															}
+																		
+								#pgr2head{
+
+											display:flex;
+											justify-content:space-around;
+											align-items: center;
+											font-weight:bold;
+												
+												
+								}
+								#sqnum{
+												display:flex;
+												justify-content:center;
+												align-items:center;
+												height:50px;
+												width:100px;
+												color:black;
+												font-weight:bold;
+												border-radius:50px;
+												padding:8px;
+												margin:2px;
+												background:#FADCD9;
+											
+										
+								}
+								#pgr3card{
+								    display:flex;
+								    flex-direction:column;
+								    justify-content: center;
+								    align-items:center;
+												
+												width:300px;
+												padding:12px;
+												background:white;
+												border-radius:4px;
+								}
+								@keyframes zola{
+												0%{transform:translateY(-5px);}
+												5%{transform:translateY(5);}
+												10%{transform:translateY(-4px);}
+												15%{transform:translateY(4px);}
+												20%{transform:translate(-3px);}
+												25%{transform:translate(3px);}
+												30%{transform:translate(-2px);}
+												35%{transform:translateY(2px)}
+												40%{transform: translateY(-1px);}
+												45%{transform:translateY(1px);}
+											50%{transform:translateY(-5px);}
+												55%{transform:translate(5);}
+												60%{transform:translate(-4px);}
+												65%{transform:translate(4px);}
+												70%{transform:translate(-3px);}
+												75%{transform:translateY(3px);}
+												80%{transform:translateY(-2px);}
+												85%{transform:translateY(2px)}
+												90%{transform: translateY(-1px);}
+												100%{transform:translateY(1px);}
+								}
+								
+						
+								
+								#footlinks div{
+								    height:150px;
+												width:300px;
+												padding:8px;
+												border:solid 2px cyan;
+												color:black;
+												margin:8px;				background:rgba(255,255,255,0.6);
+												
+								}
+								#footlinks a{
+												color: purple;
+								}
+								#attrib{
+												border-bottom:solid 1px aqua;
+												padding:8px;
+												color:black;
+								}
+								#shlink{
+								    display:flex;
+								    justify-content:center;
+								    align-items:center;
+												height:75px;
+												width:250px;
+												
+												background: linear-gradient(-45deg,#FF512F ,#DD2476);
+												border-radius:50px;
+												color:white;
+												font-weight:bold;
+												text-decoration:none;
+											 animation:zola 2s 0.5s linear infinite alternate;
+								}
+								
+								
+					
+								
+								#pgr4{
+								
+								display:none;
+								padding:12px;
+								overflow:auto;
+								
+											
+								}
+								
+						.cfinput	{
+						    height:60px;
+						    width:200px;
+						    border-radius:50px;
+									 border:solid 1px cyan;
+										outline:none;
+										padding:12px;
+										background:white;
+						}	
+						.pgr4box{
+						display:flex;
+						flex-wrap:wrap;
+						justify-content:center;
+						align-items:center;
+						padding:12px;
+						background:#F9F1F0;
+						}
+						.pgr4card{
+						    display:flex;
+						    flex-direction:column;
+						    justify-content:center;
+						    align-items:center;
+								  width:300px;
+										padding:8px;
+										background:none;
+							
+										
+						}
+						
+						
+					 .buttondown{
+					 		
+					 		height:80px;
+					 	 width:150px;
+					 		border:none;
+					 		background:linear-gradient(-45deg,#FF512F ,#DD2476);	
+					   border-radius:50px;
+					 		color:white;
+					 		font-weight:bold;
+					 		font-size:18px;
+					 		border: none;
+					 		
+					 				
+					 }
+					 .buttondown:active{
+					 			 transform:scale(0.9);
+					 }
+					 
+					 .downbtncard{
+					 				display:flex;
+					 				justify-content: space-evenly;
+					 				align-items:center;
+					 				animation:zola 7s 0.5s linear infinite alternate;
+					 }
+					 #pgr5{
+					 				display:none;
+					 }
+					 .shareoncard div{
+					    display:flex;
+					    justify-content:center;
+					    flex-wrap:wrap;
+					 			padding:12px 8px 12px 8px;
+					 			border-bottom:solid 1px silver;	
+					 }
+					 @keyframes nextup(){
+					 				0%{transform:translateY(0px);}
+					 				100%{transform:translateY(20px);}
+					 }
+					 
+					 #cdpage{
+					     
+					 				display:none;
+					 	   height:100vh;
+					     width:100%;
+         background:black;
+					    overflow:auto;
+					 }
+					 #cdpage div{
+					    
+					 				display:flex;
+					 				flex-direction:column;
+					 				justify-content:center;
+					 				align-items:center;
+					 		
+					     
+					 }
+					 .cdcard{
+					 				display:flex;
+					 				flex-direction:column;
+					 				justify-content:center;
+					 				align-items:center;
+					 				height:100vh;
+					 				width:100%;
+					 				border-radius:12px;
+					 				margin:20px 4px 4px 4px;
+					 				background:white;
+					 				padding:8px;
+					 				}
+					
+					 #showcd{
+					     display:flex;
+					     justify-content:center;
+					     align-items:center;
+					     height:100px;
+					     width:100px;
+					 		 	font-size:42px;
+					 				font-weight:bold;	
+					 				color:white;
+					 			 background:linear-gradient(-45deg,#FF512F ,#DD2476);
+					 			 padding:8px;
+					 			 border-radius:50%;
+					 			 
+					 			
+					 }
+					 
+				</style>
+</head>
+<body>
+			
+		<div>	
+		<div id="pgr1">
+						
+						<div id="pgr1card">
+										
+										<div id="pgr1head">
+											
+										<p id="rhead"><span class="fletters">R</span>enuk<span class="fletters">a</span> <span class="fletters">C</span>ollectio<span class="fletters">n</span></p>
+										</div>
+										<p class="loct">Killari,Latur</p>
+										<p id="qc">Quiz Contest | Round 1</p>
+								
+										
+									<div>
+										<div id="inpbox">
+										<input oninput="personal()" type="text" id="qfname" placeholder="Enter Your name...">
+										<button class="butnext" onclick="getstart()">Start</button>
+										</div>
+										</div>			
+						</div>
+			
+						<div>
+						<div id="pgr1headmid">
+					<p>play🔥</p>
+					<p>Be 🏆 winner</p>
+					<p>Get 👉</p><p>participation</p><p> Certificate 🏆</p>
+					<p>Increase🔥</p><p> General Knowledge</p>
+					<p>Share💌</p><p> with friends✌️</p>
+					<p>Enjoy!🎉</p><p> Contest💞</p>
+					<p>Renuka collection✔️</p>
+					<p>Quiz⭐</p>
+					<p>contest🏆</p>
+					<p>for everyone🤗</p>
+					<p>share your💨</p><p>certificate🌟</p>
+					<p>on social media</p><p>Facebook✨</p><p>WhatsApp ✍️</p><p>Instagram💞</p><p>Get Recognition 👋</p>
+					
+		</div>
+		
+				<div id="footlinks">	
+				<div><p>कपड्यांची खरेदी फक्त रेणुका कलेक्शन किल्लारी.</p>
+			<p>Powered by <a href="https://g.co/kgs/DXqtQX" >Renuka collection</a>, Killari 413516</p>
+			</div>
+			
+				<div></p>Created by <a href="https://wa.me/message/APOCHIOCNX36P1" target="_blank">Balaji Murumbe</a> | Organise your own contest like this & increase brand awarenes. <a href="https://wa.me/message/APOCHIOCNX36P1" target="_blank">Say Hi! on WhatsApp</a></p></div>
+				
+			</div>
+			
+</div>
+</div>
+
+<div id="cdpage">
+				<div>
+				<div class="cdcard">
+									<h2>Renuka Collection Killari</h2>
+									<p>Your Quiz Will get started in 10 seconds</p>
+								<div>
+										<p id="showcd"></p>		
+								</div>
+					</div>
+					</div>
+</div>
+
+		<div id="pgr2">
+		
+		<div id="pgr2head">
+						
+						
+		</div>				
+		<div id="seldiv">
+						
+		</div>
+		
+		</div>
+		
+		
+<div id="pgr3">				
+<div id="pgr3card">
+				
+<div>
+<p>Renuka collection Killari</p>
+</div>
+<div>
+<h2>अभिनंदन <span id="yourn2"></span>! तुम्ही यशस्वीपणे प्रश्नमंजुषा दिली आहे, आता तुमचा निकाल पहा.</h2>
+<p>तुमचा निकाल तुमच्या WhatsApp status ला दिसेल</p>
+<p>खालील बटणावर क्लिक करून तुमच्या WhatsApp स्टेटस ला शेअर करा.</p></div>								
+<div class="shareoncard">										
+<div>
+	<p>तुमच्या WhatsApp स्टेटस ला शेअर करा आणि मिळावा Renuka collection Quiz participation Certificate Instantly.<span id="sharescount"></span></p>
+<a id="shlink" onclick="sharecounting()">Share on WhatsApp</a>
+</div>	
+
+</div>
+					
+<div><p><b>Renuka collection feedback</b> : <span id="pscore"></span></p></div>
+
+    </div>
+  </div>
+
+	
+	<div id="pgr4">
+				<div class="pgr4box">
+								<h2>Download Your Certificate</h2>
+								<p>Renuka Collection Quiz contest certificate</p>
+								<div class="pgr4card">
+										<p>Enter first name</p>
+									<input style="" type="text" class="cfinput" id="myfname" oninput="myinp()" placeholder="Ex: Balaji" >
+					
+									
+									<p>Enter your last name</p>
+						<input type="text" class="cfinput" id="mylname" placeholder="Ex: Jadhav" oninput="myinp()">
+						
+						
+							<p>Enter your school/college name</p>
+						<input  type="text" class="cfinput" id="myschool" placeholder="Ex: Shivaji vidyalaya killari" oninput="myinp()">
+					</div>
+			<p>	<button class="butnext" onclick="jumptopgr5()">Next</button></button></p>
+				</div>
+</div>
+		
+		<div id="pgr5">
+						<div>
+								<h2>Share Certificate</h2>
+						<div id="crtfpreview">
+								
+										
+						</div>
+						</div>
+						<div class="downbtncard">
+										<button onclick="sharecanvas()" class="buttondown">Share</button>
+										<button onclick="down()" class="buttondown">Download</button>
+						</div>
+		</div>
+				<script>
+							
+var seldiv = document.getElementById("seldiv");		
+var newdiv = document.getElementsByClassName("newdiv1");					
+							
+var arrq = [
+"महाराष्ट्राचे मुख्यमंत्री कोण आहेत?",
+"मराठवाड्यामध्ये एकूण किती तालुके आहेत?",
+"शिक्षणाचे उप माहेरघर म्हणून कोणत्या जिल्ह्यास संबोधले जाते?",
+"लातूर जिल्ह्यातील किल्लारी गावातील सुप्रसिध्द देवस्थान कोणते आहे ?",
+"रातांधळेपणा कोणत्या विटामिन च्या कमतरतेमुळे होतो?",
+"भारतात नोट बंदी केव्हा झाली?",
+"जगातील पैशाने सर्वात श्रीमंत व्यक्ती कोण आहे ?",
+"भारताचे पंतप्रधान कोण आहेत ?",
+"Spotify या गाणी ऐकण्याच्या ॲप चे founder कोण आहेत?",
+"किल्लारी गावामधील सुप्रसिध्द कपड्याच्या दुकानचे नाव काय आहे?"
+
+	]
+								
+var arrop = [
+
+["देवेंद्र फडणवीस","उध्दव ठाकरे","एकनाथ शिंदे"],
+["8","6","12"],
+["पुणे","लातूर","औरंगाबाद"],
+["नीलकंठेश्वर मंदीर","राम मंदीर","गणपती मंदीर"],
+["विटामिन B","विटामिन A","यापैकी नाही"],
+["9/11/2016","8/11/2016","10/11/2016"],
+["जेफ बेजोस","एलोन मस्क","मार्क झकरबर्ग"],
+["रामनाथ कोविंद","नरेंद्र मोदी","बालाजी मुरंबे"],
+["डॅनिअल एक","जेफ बेजोस","मुकेश अंबानी"],
+["मयुरी कलेक्शन","रेणुका कलेक्शन","यापैकी नाही"]
+	];
+								var arrans = [
+								"एकनाथ शिंदे",
+								"8",
+								"लातूर",
+								"नीलकंठेश्वर मंदीर",
+								"विटामिन A",
+								"8/11/2016",
+								"एलोन मस्क",
+								"नरेंद्र मोदी",
+								"डॅनिअल एक",
+								"रेणुका कलेक्शन"];
+								var arrnm =[
+												["qno1","qno1","qno1"],
+												["qno2","qno2","qno2"],
+												["qno3","qno3","qno3"],
+												["qno4","qno4","qno4"],
+												["qno5","qno5","qno5"],
+												["qno6","qno6","qno6"],
+												["qno7","qno7","qno7"],
+										  ["qno8","qno8","qno8"],
+										  ["qno9","qno9","qno9"],
+										  ["qno10","qno10","qno10"]
+								]
+								var arrids= [
+												["op11","op12","op13"],
+												["op21","op22","op23"],
+												["op31","op32","op33"],
+												["op41","op42","op43"],
+												["op51","op52","op53"],
+												["op61","op62","op63"],
+												["op71","op72","op73"],
+												["op81","op82","op83"],
+												["op91","op92","op93"],
+												["op101","op102","op103"]
+								];
+								var arrofclass=[
+								
+								"class01",
+								"class02",
+								"class03",
+								"class04",
+								"class05",
+								"class06",
+								"class07",
+								"class08",
+								"class09",
+								"class010"
+						
+								]
+								var q1= document.getElementById("q1");
+								
+								var userans=[];
+								var arrn=0;
+								var qcount=0;
+							var tt=0;
+					  var mcount;
+
+function check(){
+mcount=qcount - 1;
+var getuserin = document.getElementsByName(arrnm[mcount][0]);
+var idopt = document.getElementsByClassName(arrofclass[mcount]);
+	
+for(var i=0;i<getuserin.length;i++){
+
+idopt[i].style.background="white";
+idopt[i].style.color="black";
+if(getuserin[i].checked){
+userans[mcount]=getuserin[i].value;
+
+idopt[i].style.background="cyan";
+
+idopt[i].style.color="dodgerblue";
+}
+}
+if(mcount!=(arrq.length)-1){
+
+setTimeout(start,100);
+}
+console.log(mcount);
+		
+if(mcount==9){
+
+submit();
+										
+}
+
+				}
+				function gobackq(){
+								
+				}
+					var score=0;
+					var totalq=0;
+					var wrongans=0;
+					var correctans=0;
+			  var noti="";
+			 	var y = 0;
+			 	
+				function go(){
+								
+								var noties=document.getElementsByClassName("noty")[0];
+								noties.innerHTML=noti;
+	
+				}
+				
+				var oninpcount =0;
+			function 	personal(){
+		audio4.play();
+			oninpcount=oninpcount+1;
+							var myname = document.getElementById("qfname").value;
+							
+							var mname=myname.toUpperCase();
+							var welmsg = ["👋 Hello 😍 cute","👋 Hey🤗 wonderful","👋 Hey sweet😊","Nice😊 to see you"];
+							var wellen= welmsg.length;
+						 var welrand = Math.floor(Math.random()*wellen)+0;
+							if(mname == "SIDDU"){
+										alert("Hi Bro! You are looking 🔥 HOT today 😁");	
+							}
+							else if(mname=="MAYURI" || mname=="MUKTA"){
+											alert("WhatsApp Didi!  😁");
+							}
+							var farr=["SAGAR","DHIRAJ","SANDHYA","MUKESH","NITESH","SARTHAK","KARAN","SHUBHAM","AJAY"];
+						 				
+							for(var i=0;i<farr.length;i++){
+										if(mname==farr[i]){
+										    
+														alert(welmsg[welrand]+" "+mname+" 😊");
+										}	
+							}
+		
+			}
+			
+			var cdcount=0;
+			var cdcounter;
+			var cdpage = document.getElementById("cdpage");
+			
+			function startercount(){
+			audio13.play();
+			 startpg.style.display="none";
+			    cdpage.style.display="block";
+						 cdcounter= setInterval(startcount,1000);
+			}
+			
+	
+	
+			function startcount(){
+			    
+							var countdown = 10-cdcount;
+									var showcd = document.getElementById("showcd");
+							showcd.innerHTML=countdown;
+	
+						if(countdown==0){
+						   
+								clearInterval(cdcounter);
+								cdpage.style.display="none";
+								startstart();	
+						}	
+						cdcount=cdcount+1;
+			}
+			
+				function final(){
+				
+				for(var i=0;i<arrq.length;i++){
+			       console.log(arrq[i]);
+			       
+								if(userans[i]==arrans[i]){
+							 correctans= correctans+1;
+								console.log("correct"+userans[i]+"="+arrans[i]);
+										score+=10;
+								  
+								}
+								
+							else{
+							wrongans= wrongans+1;
+											console.log("wrong : "+userans[i]+"="+arrans[i]);
+							}
+								}
+								console.log(score);
+				}
+				
+								var startpg = document.getElementById("pgr1");
+								var midpage = document.getElementById("pgr2");
+								var endpage = document.getElementById("pgr3");
+								var mynameis ="";
+		      var yourn;
+		      
+		function getstart(){
+		yourn = document.getElementById("qfname").value;
+					if(yourn!=""){
+									startercount();
+							
+					}
+					else{
+									alert("Please Enter your name");
+					}	
+		}
+		
+var audio3=new Audio("https://docs.google.com/uc?export=download&id=1g2w4ffzXh5HV1w8kbd4Wbrn4NdYGP6F5");
+var audio4=new Audio("https://docs.google.com/uc?export=download&id=1gL7LvpXjgR2gJO-7J-mulByUGgv312fO");
+var audio5=new Audio("https://docs.google.com/uc?export=download&id=1gnPV3wmXuCU_KwlqvQYOsMEGu6wdjDnl");
+var audio6=new Audio("https://docs.google.com/uc?export=download&id=1gLjYBrmlVpToLL2g50x5Ygl7YBbBNFBl");
+var audio7=new Audio("https://docs.google.com/uc?export=download&id=1hM6fk9lMCjpCEoanK_PLVeASVhuffQRc");
+var audio8=new Audio("https://docs.google.com/uc?export=download&id=1hNjGR1ysa8lPEZfLYdj_rQ5eol1GhPLU");
+var audio9=new Audio("https://docs.google.com/uc?export=download&id=1hglQzh5ei9aHcn95PEpvShHvqh6tfCHr");
+var audio10=new Audio("https://docs.google.com/uc?export=download&id=1hjp6JWeRZ8HzJI2eU3QEPeJNve7OPJuN");
+var audio11=new Audio("https://docs.google.com/uc?export=download&id=1hkMZbVzJ4NgqBjIgepZ41tw3AdqVVXhW");
+var audio12=new Audio("https://docs.google.com/uc?export=download&id=1hpKD2NSYRx8T5JvC3vOn4H4kLhyW6kMI");
+var audio13=new Audio("https://docs.google.com/uc?export=download&id=1i1i6Ra0ybuzefElBKb1Hoveus_39nH6G");
+
+								function start(){
+								
+								if(qcount>0){
+									removeq(); 
+									}	
+								
+							
+								mynameis=yourn;
+						
+								var yournbox2 = document.getElementById("yourn2");
+								
+								yournbox2.innerHTML = yourn;
+var newdivbox = document.createElement("div");							
+var newdiv1= document.createElement("div");
+var newdiv2= document.createElement("div");
+newdivbox.setAttribute("class","newdivbox");
+newdiv1.setAttribute("class","newdiv1");
+newdiv2.setAttribute("class","newdiv2");
+var hnewele = document.createElement("p");
+var notydiv = document.createElement("div");
+notydiv.setAttribute("class","notybox");
+var noty =document.createElement("p");
+noty.setAttribute("class","noty");
+notydiv.appendChild(noty);
+
+
+
+
+var seqnum = document.createElement("p");
+var qnumber = qcount+1+"/"+arrq.length;
+var seqnumtext= document.createTextNode(qnumber);
+seqnum.setAttribute("id","sqnum");
+notydiv.appendChild(seqnum);
+var attrib = document.createElement("p");
+attrib.setAttribute("id","attrib");
+attribnode = document.createTextNode("Renuka Collection Killari");
+attrib.appendChild(attribnode);
+
+var newrap0 = document.createElement("p");
+var newrap1 = document.createElement("p");
+var newrap2 = document.createElement("p");
+
+var newlab0 = document.createElement("label");							  
+var newopt0 = document.createElement("input");			
+var newlab1 = document.createElement("label");		
+var newopt1 = document.createElement("input");	
+var newlab2 = document.createElement("label");
+var newopt2 = document.createElement("input");		
+
+newrap0.appendChild(newlab0);
+newrap0.appendChild(newopt0);
+newrap1.appendChild(newlab1);
+newrap1.appendChild(newopt1);
+newrap2.appendChild(newlab2);
+newrap2.appendChild(newopt2);
+
+newopt0.setAttribute("type","radio");
+newopt1.setAttribute("type","radio");
+newopt2.setAttribute("type","radio");
+
+newopt0.setAttribute("oninput","check()");
+newopt1.setAttribute("oninput","check()");
+newopt2.setAttribute("oninput","check()");
+
+newopt0.setAttribute("value",arrop[qcount][0]);
+newopt1.setAttribute("value",arrop[qcount][1]);
+newopt2.setAttribute("value",arrop[qcount][2]);
+
+newlab0.setAttribute("for",arrids[qcount][0]);		
+newlab1.setAttribute("for",arrids[qcount][1]);
+newlab2.setAttribute("for",arrids[qcount][2]);
+
+newopt0.setAttribute("id",arrids[qcount][0]);	
+newopt1.setAttribute("id",arrids[qcount][1]);			
+newopt2.setAttribute("id",arrids[qcount][2]); 
+
+newopt0.setAttribute("name",arrnm[qcount][0]);
+newopt1.setAttribute("name",arrnm[qcount][1]);
+newopt2.setAttribute("name",arrnm[qcount][2]); 		
+
+newopt0.setAttribute("value",arrop[qcount][0]);
+newopt1.setAttribute("value",arrop[qcount][1]);
+newopt2.setAttribute("value",arrop[qcount][2]);
+
+newrap0.setAttribute("class",arrofclass[qcount]);
+newrap1.setAttribute("class",arrofclass[qcount]);
+newrap2.setAttribute("class",arrofclass[qcount]);
+
+
+								  var opttextnode0 = document.createTextNode(arrop[qcount][0]);
+								  var opttextnode1 = document.createTextNode(arrop[qcount][1]);
+var opttextnode2 = document.createTextNode(arrop[qcount][2]);
+
+
+newlab0.appendChild(opttextnode0);
+newlab1.appendChild(opttextnode1);
+newlab2.appendChild(opttextnode2);
+
+								  
+								  var htextnode = document.createTextNode(arrq[qcount]);
+								  
+								  hnewele.appendChild(htextnode);		
+								  seqnum.appendChild(seqnumtext);
+								  newdiv1.appendChild(hnewele);
+								  newdiv2.appendChild(newrap0);
+								  newdiv2.appendChild(newrap1);
+								  newdiv2.appendChild(newrap2);								  			  				
+								  newdivbox.appendChild(notydiv);				  
+								  newdivbox.appendChild(newdiv1);
+								  newdivbox.appendChild(newdiv2);
+								  seldiv.appendChild(newdivbox);
+          
+psound();	
+changebackclr();
+    
+							qcount=qcount+1;	
+							
+							if(mcount==arrq.length){
+									 		qcount=0;		
+									 }
+												
+									
+							 
+							
+							
+				}	
+				
+	function changebackclr(){
+	
+	var newdivbox = document.getElementsByClassName("newdivbox")[0];
+	
+					
+	}			
+				
+	function psound(){
+audio11.play();
+
+					for(var s=0;s<3;s++){
+				var atap = document.getElementsByClassName(arrofclass[qcount])[s];
+atap.addEventListener("input",function(){
+
+
+audio3.currentTime = 0; audio3.play();
+
+});
+}	
+}
+				
+				
+				function removeq(){
+			const list = document.getElementById("seldiv");
+
+if (list.hasChildNodes()) {
+  list.removeChild(list.children[0]);
+}
+}
+				function startstart(){
+						
+								midpage.style.display="block";		
+								timetik = setInterval(timeout,1000);
+								gointerval = setInterval(go,1000);
+								settimelimit = setTimeout(submit,1000*endtime);
+								start();
+				}
+				
+				var timetik;	
+				var settimelimit;
+				var sectik=0;
+				var endtime=60;
+				
+				function timeout(){
+							
+								sectik=sectik+1;
+								var secrem=endtime-sectik;
+								noti = secrem+" seconds left. ";
+								if(sectik>55){
+												noti=secrem+"s auto submit on...";
+								}
+								else if(sectik<5){
+										 
+												noti="Welcome "+mynameis+" 🤗 ";		
+																						
+					}			
+					
+					
+				}		
+				var ccount=0;
+				function submit(){
+				 ccount=ccount+1;
+				 if(ccount==1){
+				 final();
+				 clearTimeout(settimelimit);
+					console.log(ccount);
+					
+					}
+					alert("Awesome ! Your quiz submitted successfully");
+					audio5.play();
+				  shareitbro();
+	
+				  var pscore = document.getElementById("pscore");
+				  
+var arrfeed100=["Wow 😳! you scored 100%","Its very amazing 😍! ,100%","You are superhero🔥 , 100%","What a great 😃 score ,100%","You are genius 🤗, 100%"];
+
+var arrfeed30=["Great 😃 score!","Awesome 😎 score!","fantastic 😊 score!","Hoorah ✌️ score!","wonderful 😍! score"];
+				  
+var arrfeed10=["nice keep it on!","well done , Carry on!","🤗 well done","👍 carry on","good! carry on"];
+
+var arrcustfeed = ["You are our best😃 customer.","You are our sweet customer 🤗.","You are our very best customer 😍.","You are our very great customer 😀.","You are very good customer 😊."];
+
+var arrflen = arrfeed30.length;	  
+var randfeed = Math.floor(Math.random()*arrflen)+0;
+      if(score>=30){
+				  pscore.innerHTML=arrfeed30[randfeed]+" "+mynameis+" "+arrcustfeed[randfeed];
+				  }
+				  else if(score<30){
+				  				pscore.innerHTML=arrfeed10[randfeed]+" "+mynameis+" "+arrcustfeed[randfeed];
+				  }
+				  else if(score==100){
+				  				pscore.innerHTML=arrfeed100[randfeed]+" "+mynameis+". You are our most favourite🎉🤗💞 customer.";
+				  }
+				  midpage.style.display="none";
+						endpage.style.display="block";
+						clearInterval(timetik);									
+					
+								}
+								
+					
+								
+	function shareitbro(){
+												
+var shlink=document.getElementById("shlink"); 
+shlink.setAttribute("data-action","share/whatsapp/share");
+var shareres=`whatsapp://send?text=*अभिनंदन 🎉 ${mynameis}! तुमच्या प्रश्नमंजुषा चा निकाल :🤗score:- ${score}%/✌️Correct${correctans} /👻Wrong:${wrongans}/💞Time: ${sectik}sec/* Renuka collection killari held Quiz Contest. Now its your turn...`;
+shlink.setAttribute("href",shareres);
+								}
+								
+	var shcount=0;					
+	function sharecounting(){
+	shcount=shcount+1;
+	var sharescount = document.getElementById("sharescount");
+	var getcert = document.getElementById("getcert");
+				if(shcount==1){
+				  jumptopgr4();
+				}	
+				
+	}
+				
+	function jumptopgr4(){
+	
+					var pgr4 = document.getElementById("pgr4");
+					var pgr3 = document.getElementById("pgr3");
+					
+					pgr3.style.display="none";
+					pgr4.style.display="block";
+					
+					
+	}
+	
+	function jumptopgr5(){
+	    var pgr4 = document.getElementById("pgr4");
+					var pgr5 = document.getElementById("pgr5");
+					if(myfname!="" && mylname!="" && myschool!=""){
+					audio10.play();
+					audio12.play();
+				 pgr4.style.display="none";
+				 pgr5.style.display="block";
+				 }
+				 else{
+				 				alert("please Enter name,surname,school name");
+				 }
+	}
+					var c;
+					var myfname="";
+					var mylname="";
+					var myschool ="";
+					var todate="";
+	function myinp(){
+					
+
+			myfname = document.getElementById("myfname").value;	
+			mylname = document.getElementById("mylname").value;	
+			myschool = document.getElementById("myschool").value;	
+			todate = new Date();
+			
+			}
+	
+	function	setup(){
+	
+			c =	createCanvas(350,500);
+						background("white");
+			c.id("canva");		
+			c.parent("crtfpreview");
+				
+				}
+			
+				function draw(){
+				   
+					 
+							noStroke();
+							fill("cyan");
+		
+							circle(50,100,20);
+							circle(100,100,20);
+							circle(150,100,20);
+							circle(200,100,20);
+							circle(250,100,20);
+							circle(300,100,20);
+							
+							
+							circle(50,200,20);
+							circle(100,200,20);
+							circle(150,200,20);
+							circle(200,200,20);
+							circle(250,200,20);
+							circle(300,200,20);
+							
+							
+							circle(50,300,20);
+							circle(100,300,20);
+							circle(150,300,20);
+							circle(200,300,20);
+							circle(250,300,20);
+							circle(300,300,20);
+							
+							
+							circle(50,400,20);
+							circle(100,400,20);
+							circle(150,400,20);
+							circle(200,400,20);
+							circle(250,400,20);
+							circle(300,400,20);
+							
+							fill("rgba(255,255,255,0.6)");
+							stroke("blue");
+							strokeWeight(4);
+							rect(5,10, 340, 480, 0);
+				
+					  noStroke();
+			   	fill("purple");
+							textSize(40);	
+							textAlign(CENTER);
+							textStyle(BOLD);
+							text("CERTIFICATE",20,50,300,300);
+			   	fill("rgb(0,0,0)");
+							textSize(11);	
+							textAlign(CENTER);
+							textStyle(NORMAL);
+							text("of participation",20,100,300,300);
+							text("This certificate proudly presented to",20,150,300,300);
+							textStyle(BOLD);
+							textSize(32);
+							textAlign(CENTER);
+							fill("dodgerblue");
+							text(myfname+" "+mylname,20,190,300,300);
+							textStyle(BOLD);
+							textSize(8);
+							textAlign(CENTER);
+							fill("orange");
+							text("from:- "+myschool,20,230,300,300);
+							textAlign(CENTER);
+							fill("rgb(0,0,0)");
+							textSize(11);
+							textStyle(NORMAL);
+							text("Participated in Renuka Collection Quiz Contest Round-1. This certificate is offered in the recognition of participation and outstanding achievement.",20,250,300,300);
+							textSize(32);
+							textStyle(BOLD);
+							fill("dodgerblue");
+							text("🏆 Score "+score+"%",20,300,300,300);
+							textSize(14);
+							textStyle(BOLD);
+							fill("orange");
+							text("🕓 Time taken : "+sectik+"/60 seconds",20,350,300,300);
+							textAlign(CENTER);
+							textStyle(BOLD);
+							textSize(12);
+							fill("purple");
+							text("Renuka Collection, Killari",20,370,300,300);
+							textAlign(CENTER);
+							textSize(8);
+							textStyle(ITALIC);
+							text("Quiz Contest Organiser",20,390,300,300);
+					  text("/// Congratulations 🎉 "+myfname+" ~ Renuka collection///",20,400,300,300);
+					  text("Killari 413516, Latur, Maharashtra",20,420,300,300);
+					  fill("dodgerblue");
+					  stroke("cyan");
+					  strokeWeight(10);
+					  circle(290,440,80);
+					  noStroke();
+					  fill("aqua");
+					  textStyle(BOLD);
+					  textSize(8);
+					  textAlign(CENTER);
+					  text("Renuka collection Quiz Contest Certificate ⭐⭐⭐ ",265,420,50,50);
+					  fill("black");
+					  textSize(6);
+					  textAlign(CENTER);
+					  textStyle(NORMAL);
+							text("Date: "+todate,20,450,300,300);
+				}
+				
+				function down(){
+				    alert("Wait Downloading....");
+								saveCanvas(c,"mycanva","png");		
+				}
+				
+				async function sharecanvas() {
+  const canvasElement = document.getElementById("canva");
+  const dataUrl = canvasElement.toDataURL();
+  const blob = await (await fetch(dataUrl)).blob();
+  const filesArray = [
+    new File(
+      [blob],
+      'certificate.png',
+      {
+        type: blob.type,
+        lastModified: new Date().getTime()
+      }
+    )
+  ];
+  const shareData = {
+    files: filesArray,
+  };
+  navigator.share(shareData);
+}
+					
+				
+	</script>		
+</body>
+</html>
