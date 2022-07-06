@@ -1347,6 +1347,7 @@ textStyle(BOLD);
 				
 				
 				async function sharecanvas() {
+saveCanvas(c,"mycanva","png");	
   const canvasElement = document.getElementById("canva");
   const dataUrl = canvasElement.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
